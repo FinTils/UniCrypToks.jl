@@ -1,0 +1,7 @@
+name = "UniCrypToks"
+uuid = "4d0c8233-d1ad-48d2-89bb-457af84f350f"
+authors = ["C. Naaktgeboren <NaaktgeborenC.PhD@gmail.com> and contributors"]
+version = "0.1.0"
+
+[compat]
+julia = "1.6.7"
