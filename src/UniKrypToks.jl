@@ -7,7 +7,7 @@ module UniKrypToks
 
 # imports
 using Reexport
-@reexport using FixedPointDecimal
+@reexport using FixedPointDecimals
 @reexport using Printf
 
 # include - abstract supertypes
