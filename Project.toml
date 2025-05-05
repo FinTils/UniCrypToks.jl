@@ -1,13 +1,11 @@
 name = "UniKrypToks"
-uuid = "4d0c8233-d1ad-48d2-89bb-457af84f350f"
+uuid = "fa8da494-afdd-4eb3-b76d-fcf46394284c"
 authors = ["C. Naaktgeboren <NaaktgeborenC.PhD@gmail.com> and contributors"]
 version = "0.1.0"
 
 [deps]
-FinTilsBase = "20b8b8ae-5651-4d78-a8e3-e177aef551c4"
 FixedPointDecimals = "fb4d412d-6eee-574d-9565-ede6634db7b0"
 
 [compat]
-FinTilsBase = "0.1.0"
 FixedPointDecimals = "0.6.3"
 julia = "1.6.7"
