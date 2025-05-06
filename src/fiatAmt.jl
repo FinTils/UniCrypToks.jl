@@ -7,13 +7,15 @@
 #--------------------------------------------------------------------------------------------------#
 
 """
-``\n
+`struct fiatAmt <: toknAmount`\n
+A fiat `toknAmount`, i.e., a fiat currency amount of uniform representation.
 """
 struct fiatAmt <: toknAmount
     sym::Symbol
-    qty::amt
+    val::FD
 end
 
+# export
 export fiatAmt
 
 
