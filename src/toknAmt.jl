@@ -37,7 +37,7 @@ function bare(x::𝕋)::FD where {𝕋 <: toknAmount} end
 function isFiat(x::𝕋)::Bool where {𝕋 <: toknAmount} end
 
 # function to return whether a token is a crypto currency
-isCryp(x::𝕋)::Bool where {𝕋 <: toknAmount} = !isFiat(x)
+(isCryp(x::𝕋)::Bool) where {𝕋 <: toknAmount} = !isFiat(x)
 
 # function to copy a token's instance
 function copy(x::𝕋) where {𝕋 <: toknAmount}
