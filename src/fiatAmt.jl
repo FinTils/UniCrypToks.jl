@@ -22,7 +22,7 @@ struct fiatAmt <: toknAmount
         SYM = string(sym)
         if length(SYM) > 6
             eid = collect(eachindex(SYM))
-            SYM = SIM[eid[1]:eid[6]]
+            SYM = SYM[eid[1]:eid[6]]
         end
         new(Symbol(SYM), val)
     end
@@ -37,6 +37,5 @@ export fiatAmt
 # concrete interface functions:
 bare(x::fiatAmt) = x.val
 symb(x::fiatAmt) = x.sym
-isFiat(x::fiatAmt) = true
 
 
