@@ -8,6 +8,8 @@
 
 FD(s::String) = FD(parse(BigFloat, s))
 
+FD(q::Rational) = FD(BigFloat(q))
+
 import Base: show
 
 function show(io::IO, ::MIME"text/plain", x::FD)
