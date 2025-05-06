@@ -54,12 +54,19 @@ end
 
 # {𝕋, 𝕋}-binaries
 for bnARY in [:+, :-]
-    @eval $bnARY(x::𝕋, y::𝕋) where {𝕋 <: toknAmount} = 𝕋(symb(x), $bnARY(bare(x), bare(y)))
+    OPER = bnARY == :+ ? "add" : "subtract"
+    @eval begin
+        function $bnARY(x::𝕋, y::𝕋) where {𝕋 <: toknAmount}
+            @assert(symb(x) == symb(y),
+                    @sprintf("Can't %s different tokens!", $OPER))
+            𝕋(symb(x), $bnARY(bare(x), bare(y)))
+        end
+    end
 end
 
 # {𝕋, Real}-binaries
 for bnARY in [:*, :/]
-    @eval $bnARY(x::𝕋, y::Real) where {𝕋 <: toknAmount} = 𝕋(symb(x), $bnARY(bare(x), bare(y)))
+    @eval $bnARY(x::𝕋, y::Real) where {𝕋 <: toknAmount} = 𝕋(symb(x), $bnARY(bare(x), y))
 end
 # fallback versions thereof
 *(y::Real, x::𝕋) where {𝕋 <: toknAmount} = *(x, y)
