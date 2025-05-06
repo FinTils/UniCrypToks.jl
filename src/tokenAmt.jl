@@ -44,11 +44,63 @@ end
 # export
 export amt
 
+bare(x::amt)::FD = x.val
+
+copy(x::amt)::amt = amt(bare(x))
+
+# export
+export bare, copy
+
 function show(io::IO, ::MIME"text/plain", x::amt)
     print(@sprintf("%+.10f", BigFloat(x.val)))
 end
 
 # Base functions to add methods
 import Base: +, -, *, /, inv, abs
+
++(x::amt, y::amt) = amt(bare(x) + bare(y))
+
+-(x:amt) = amt(-bare(x))
+
+-(x::amt, y::amt) = amt(bare(x) - bare(y))
+
+*(x::amt, a::Real) = amt(bare(x) * a)
+*(a::Real, x::amt) = x * a
+
+/(x::amt, a::Real) = amt(bare(x) / a)
+
+inv(x::amt) = amt(inv(bare(x)))
+
+abs(x::amt) = amt(abs(bare(x)))
+
+
+#--------------------------------------------------------------------------------------------------#
+#                                      fiatAmt <: CurrAmount                                       #
+#--------------------------------------------------------------------------------------------------#
+
+"""
+``\n
+"""
+struct fiatAmt <: CurrAmount
+    sym::Symbol
+    qty::amt
+end
+
+export fiatAmt
+
+
+#--------------------------------------------------------------------------------------------------#
+#                                      crypAmt <: CurrAmount                                       #
+#--------------------------------------------------------------------------------------------------#
+
+"""
+``\n
+"""
+struct crypAmt <: CurrAmount
+    sym::Symbol
+    qty::amt
+end
+
+export crypAmt
 
 
