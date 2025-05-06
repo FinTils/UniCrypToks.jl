@@ -33,12 +33,6 @@ function symb(x::𝕋)::Symbol where {𝕋 <: toknAmount} end
 # function to return a token's "bare" value as a ::FD
 function bare(x::𝕋)::FD where {𝕋 <: toknAmount} end
 
-# function to return whether a token is a fiat currency
-function isFiat(x::𝕋)::Bool where {𝕋 <: toknAmount} end
-
-# function to return whether a token is a crypto currency
-(isCryp(x::𝕋)::Bool) where {𝕋 <: toknAmount} = !isFiat(x)
-
 # function to copy a token's instance
 function copy(x::𝕋) where {𝕋 <: toknAmount}
     𝕋(symb(x), bare(x))
