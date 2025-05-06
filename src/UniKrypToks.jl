@@ -9,6 +9,7 @@ module UniKrypToks
 using Reexport
 @reexport using FixedPointDecimals
 @reexport using Printf
+@reexport using Currencies
 
 # include - abstract supertypes
 include("abstract.jl")
