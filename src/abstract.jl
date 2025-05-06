@@ -27,12 +27,6 @@ Abstract type for all token amount types.
 """
 abstract type AbstractTokenAmount <: AbstractFinance end
 
-## """
-## `abstract type bareAmount <: AbstractTokenAmount end`\n
-## Abstract type for all plain (uniform-precision) amount types.
-## """
-## abstract type bareAmount <: AbstractTokenAmount end
-
 """
 `abstract type toknAmount <: AbstractTokenAmount end`\n
 Abstract type for all (uniform-precision) currency amount types.
@@ -40,6 +34,6 @@ Abstract type for all (uniform-precision) currency amount types.
 abstract type toknAmount <: AbstractTokenAmount end
 
 # export
-export AbstractTokenAmount, bareAmount, toknAmount
+export AbstractTokenAmount, toknAmount
 
 
