@@ -16,6 +16,6 @@ const FD = FixedDecimal{DEF.FixDecTy, DEF.decimals}
 const DENO = DEF.FixDecTy(10)^DEF.decimals
 
 # export
-export DEF
+export DEF, FD
 
 
