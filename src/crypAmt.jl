@@ -13,6 +13,10 @@ A crypto `toknAmount`, i.e., a crypto currency amount of uniform representation.
 struct crypAmt <: toknAmount
     sym::Symbol
     val::FD
+    function crypAmt(sym::Symbol, val::FD)
+        ## @assert()
+        new(sym, val)
+    end
 end
 
 # export
