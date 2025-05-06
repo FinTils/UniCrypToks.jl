@@ -70,4 +70,14 @@ for bnARY in [Symbol("=="), :isless]
     @eval $bnARY(x::𝕋, y::𝕋) where {𝕋 <: toknAmount} = $bnARY(bare(x), bare(y))
 end
 
+# show
+function show(io::IO, ::MIME"text/plain", x::𝕋) where {𝕋 <: toknAmount}
+    iscompact = get(io, :compact, false)
+    if iscompact
+        print(@sprintf("%+.10f %s", BigFloat(bare(x)), symb(x)))
+    else
+        print(@sprintf("%+10.10f %6s", BigFloat(bare(x)), symb(x)))
+    end
+end
+
 
