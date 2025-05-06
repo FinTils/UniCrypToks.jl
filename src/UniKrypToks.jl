@@ -19,6 +19,12 @@ include("constant.jl")
 # include - token amount
 include("tokenAmt.jl")
 
+# include - fiat amount
+include("fiatAmt.jl")
+
+# include - cryp amount
+include("crypAmt.jl")
+
 # module
 end
 
