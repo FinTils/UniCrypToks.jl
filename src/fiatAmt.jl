@@ -13,6 +13,10 @@ A fiat `toknAmount`, i.e., a fiat currency amount of uniform representation.
 struct fiatAmt <: toknAmount
     sym::Symbol
     val::FD
+    function fiatAmt(sym::Symbol, val::FD)
+        ## @assert()
+        new(sym, val)
+    end
 end
 
 # export
