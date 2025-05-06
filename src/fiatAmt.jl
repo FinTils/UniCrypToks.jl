@@ -21,6 +21,6 @@ export fiatAmt
 # concrete interface functions:
 bare(x::fiatAmt) = x.val
 symb(x::fiatAmt) = x.sym
-isFiat(x::crypAmt) = true
+isFiat(x::fiatAmt) = true
 
 
