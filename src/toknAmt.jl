@@ -49,17 +49,17 @@ import Base: +, -, *, /, inv, abs, ==, isless
 
 # {𝕋}-unaries
 for unARY in [:-, :inv, :abs]
-    @eval $unARY(x::𝕋) where {𝕋 <: toknAmount} = 𝕋($unARY(bare(x)))
+    @eval $unARY(x::𝕋) where {𝕋 <: toknAmount} = 𝕋(symb(x), $unARY(bare(x)))
 end
 
 # {𝕋, 𝕋}-binaries
 for bnARY in [:+, :-]
-    @eval $bnARY(x::𝕋, y::𝕋) where {𝕋 <: toknAmount} = 𝕋($bnARY(bare(x), bare(y)))
+    @eval $bnARY(x::𝕋, y::𝕋) where {𝕋 <: toknAmount} = 𝕋(symb(x), $bnARY(bare(x), bare(y)))
 end
 
 # {𝕋, Real}-binaries
 for bnARY in [:*, :/]
-    @eval $bnARY(x::𝕋, y::Real) where {𝕋 <: toknAmount} = 𝕋($bnARY(bare(x), bare(y)))
+    @eval $bnARY(x::𝕋, y::Real) where {𝕋 <: toknAmount} = 𝕋(symb(x), $bnARY(bare(x), bare(y)))
 end
 # fallback versions thereof
 *(y::Real, x::𝕋) where {𝕋 <: toknAmount} = *(x, y)
