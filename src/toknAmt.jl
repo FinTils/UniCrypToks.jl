@@ -1,5 +1,5 @@
 #--------------------------------------------------------------------------------------------------#
-#                                            bareAmt.jl                                            #
+#                                            toknAmt.jl                                            #
 #--------------------------------------------------------------------------------------------------#
 
 #--------------------------------------------------------------------------------------------------#
@@ -21,6 +21,22 @@ function show(io::IO, ::MIME"text/plain", x::FD)
     else
         print(@sprintf("%+10.10f", BigFloat(x)))
     end
+end
+
+
+#--------------------------------------------------------------------------------------------------#
+#                                        toknAmt interface                                         #
+#--------------------------------------------------------------------------------------------------#
+
+# function to return a token's symbol as a ::Symbol
+function symb(x::𝕋)::Symbol where {𝕋 <: toknAmt} end
+
+# function to return a token's "bare" value as a ::FD
+function bare(x::𝕋)::FD where {𝕋 <: toknAmt} end
+
+# function to copy a token's instance
+function copy(x::𝕋) where {𝕋 <: toknAmt}
+    𝕋(symb(x), bare(x))
 end
 
 
