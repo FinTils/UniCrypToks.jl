@@ -7,13 +7,19 @@
 #--------------------------------------------------------------------------------------------------#
 
 """
-``\n
+`struct crypAmt <: toknAmount`\n
+A crypto `toknAmount`, i.e., a crypto currency amount of uniform representation.
 """
 struct crypAmt <: toknAmount
     sym::Symbol
-    qty::amt
+    val::FD
 end
 
+# export
 export crypAmt
 
+# concrete interface functions:
+bare(x::crypAmt) = x.val
+symb(x::crypAmt) = x.sym
+isFiat(x::crypAmt) = false
 
