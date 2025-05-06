@@ -23,25 +23,24 @@ function show(io::IO, ::MIME"text/plain", x::FD)
     end
 end
 
-
 #--------------------------------------------------------------------------------------------------#
-#                                        toknAmt interface                                         #
+#                                       toknAmount interface                                       #
 #--------------------------------------------------------------------------------------------------#
 
 # function to return a token's symbol as a ::Symbol
-function symb(x::𝕋)::Symbol where {𝕋 <: toknAmt} end
+function symb(x::𝕋)::Symbol where {𝕋 <: toknAmount} end
 
 # function to return a token's "bare" value as a ::FD
-function bare(x::𝕋)::FD where {𝕋 <: toknAmt} end
+function bare(x::𝕋)::FD where {𝕋 <: toknAmount} end
 
 # function to return whether a token is a fiat currency
-function isFiat(x::𝕋)::Bool where {𝕋 <: toknAmt} end
+function isFiat(x::𝕋)::Bool where {𝕋 <: toknAmount} end
 
 # function to return whether a token is a crypto currency
-isCryp(x::𝕋)::Bool where {𝕋 <: toknAmt} = !isFiat(x)
+isCryp(x::𝕋)::Bool where {𝕋 <: toknAmount} = !isFiat(x)
 
 # function to copy a token's instance
-function copy(x::𝕋) where {𝕋 <: toknAmt}
+function copy(x::𝕋) where {𝕋 <: toknAmount}
     𝕋(symb(x), bare(x))
 end
 
@@ -50,24 +49,24 @@ import Base: +, -, *, /, inv, abs, ==, isless
 
 # {𝕋}-unaries
 for unARY in [:-, :inv, :abs]
-    @eval $unARY(x::𝕋) where {𝕋 <: toknAmt} = 𝕋($unARY(bare(x)))
+    @eval $unARY(x::𝕋) where {𝕋 <: toknAmount} = 𝕋($unARY(bare(x)))
 end
 
 # {𝕋, 𝕋}-binaries
 for bnARY in [:+, :-]
-    @eval $bnARY(x::𝕋, y::𝕋) where {𝕋 <: toknAmt} = 𝕋($bnARY(bare(x), bare(y)))
+    @eval $bnARY(x::𝕋, y::𝕋) where {𝕋 <: toknAmount} = 𝕋($bnARY(bare(x), bare(y)))
 end
 
 # {𝕋, Real}-binaries
 for bnARY in [:*, :/]
-    @eval $bnARY(x::𝕋, y::Real) where {𝕋 <: toknAmt} = 𝕋($bnARY(bare(x), bare(y)))
+    @eval $bnARY(x::𝕋, y::Real) where {𝕋 <: toknAmount} = 𝕋($bnARY(bare(x), bare(y)))
 end
 # fallback versions thereof
-*(y::Real, x::𝕋) where {𝕋 <: toknAmt} = *(x, y)
+*(y::Real, x::𝕋) where {𝕋 <: toknAmount} = *(x, y)
 
 # Bool {𝕋, 𝕋}-binaries
 for bnARY in [Symbol("=="), :isless]
-    @eval $bnARY(x::𝕋, y::𝕋) where {𝕋 <: toknAmt} = $bnARY(bare(x), bare(y))
+    @eval $bnARY(x::𝕋, y::𝕋) where {𝕋 <: toknAmount} = $bnARY(bare(x), bare(y))
 end
 
 
