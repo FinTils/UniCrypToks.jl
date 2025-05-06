@@ -34,59 +34,40 @@ function symb(x::𝕋)::Symbol where {𝕋 <: toknAmt} end
 # function to return a token's "bare" value as a ::FD
 function bare(x::𝕋)::FD where {𝕋 <: toknAmt} end
 
+# function to return whether a token is a fiat currency
+function isFiat(x::𝕋)::Bool where {𝕋 <: toknAmt} end
+
+# function to return whether a token is a crypto currency
+isCryp(x::𝕋)::Bool where {𝕋 <: toknAmt} = !isFiat(x)
+
 # function to copy a token's instance
 function copy(x::𝕋) where {𝕋 <: toknAmt}
     𝕋(symb(x), bare(x))
 end
 
+# imports
+import Base: +, -, *, /, inv, abs, ==, isless
 
-## #--------------------------------------------------------------------------------------------------#
-## #                                        amt <: bareAmount                                         #
-## #--------------------------------------------------------------------------------------------------#
-## 
-## """
-## `struct amt <: bareAmount`\n
-## Plain, uniform precision, uniform underlying data type, fixed point decimal "amt" amount.
-## """
-## struct amt <: bareAmount
-##     val::FD
-##     amt(val::FD) = new(val)
-##     amt(val::Real) = new(FD(val))
-##     amt(val::String) = new(FD(val))
-##     amt(val::Rational) = new(FD(val))
-##     amt(val::Irrational) = new(FD(val))
-## end
-## 
-## # export
-## export amt
-## 
-## bare(x::amt)::FD = x.val
-## 
-## copy(x::amt)::amt = amt(bare(x))
-## 
-## # export
-## export bare, copy
-## 
-## function show(io::IO, ::MIME"text/plain", x::amt)
-##     print(@sprintf("%+.10f", BigFloat(x.val)))
-## end
-## 
-## # Base functions to add methods
-## import Base: +, -, *, /, inv, abs
-## 
-## +(x::amt, y::amt) = amt(bare(x) + bare(y))
-## 
-## -(x:amt) = amt(-bare(x))
-## 
-## -(x::amt, y::amt) = amt(bare(x) - bare(y))
-## 
-## *(x::amt, a::Real) = amt(bare(x) * a)
-## *(a::Real, x::amt) = x * a
-## 
-## /(x::amt, a::Real) = amt(bare(x) / a)
-## 
-## inv(x::amt) = amt(inv(bare(x)))
-## 
-## abs(x::amt) = amt(abs(bare(x)))
+# {𝕋}-unaries
+for unARY in [:-, :inv, :abs]
+    @eval $unARY(x::𝕋) where {𝕋 <: toknAmt} = 𝕋($unARY(bare(x)))
+end
+
+# {𝕋, 𝕋}-binaries
+for bnARY in [:+, :-]
+    @eval $bnARY(x::𝕋, y::𝕋) where {𝕋 <: toknAmt} = 𝕋($bnARY(bare(x), bare(y)))
+end
+
+# {𝕋, Real}-binaries
+for bnARY in [:*, :/]
+    @eval $bnARY(x::𝕋, y::Real) where {𝕋 <: toknAmt} = 𝕋($bnARY(bare(x), bare(y)))
+end
+# fallback versions thereof
+*(y::Real, x::𝕋) where {𝕋 <: toknAmt} = *(x, y)
+
+# Bool {𝕋, 𝕋}-binaries
+for bnARY in [Symbol("=="), :isless]
+    @eval $bnARY(x::𝕋, y::𝕋) where {𝕋 <: toknAmt} = $bnARY(bare(x), bare(y))
+end
 
 
