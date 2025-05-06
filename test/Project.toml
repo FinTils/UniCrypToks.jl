@@ -1,5 +1,6 @@
 [deps]
 Test = "8dfed614-e22c-5e08-85e1-65c5234f0b40"
+UniKrypToks = "fa8da494-afdd-4eb3-b76d-fcf46394284c"
 
 [sources]
 UniKrypToks = {url = "https://github.com/FinTils/UniKrypToks.jl"}
