@@ -38,6 +38,9 @@ function copy(x::𝕋) where {𝕋 <: toknAmount}
     𝕋(symb(x), bare(x))
 end
 
+# export
+export symb, bare, copy
+
 # imports
 import Base: +, -, *, /, inv, abs, ==, isless
 
