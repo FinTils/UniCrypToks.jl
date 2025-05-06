@@ -17,7 +17,7 @@ include("abstract.jl")
 include("constant.jl")
 
 # include - token amount
-include("tokenAmt.jl")
+include("bareAmt.jl")
 
 # include - fiat amount
 include("fiatAmt.jl")
