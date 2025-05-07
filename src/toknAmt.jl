@@ -12,12 +12,6 @@ FD(q::Rational) = FD(BigFloat(q))
 
 FD(i::Irrational) = FD(BigFloat(i))
 
-import Base: show
-
-function Base.show(io::IO, x::FD)
-    @printf("%+.10f", BigFloat(x))
-end
-
 
 #--------------------------------------------------------------------------------------------------#
 #                                       toknAmount interface                                       #
@@ -67,11 +61,6 @@ end
 # Bool {𝕋, 𝕋}-binaries
 for bnARY in [Symbol("=="), :isless]
     @eval $bnARY(x::𝕋, y::𝕋) where {𝕋 <: toknAmount} = $bnARY(bare(x), bare(y))
-end
-
-# show
-function Base.show(io::IO, x::𝕋) where {𝕋 <: toknAmount}
-    @printf("%+.10f %6s", BigFloat(x), symb(x))
 end
 
 
