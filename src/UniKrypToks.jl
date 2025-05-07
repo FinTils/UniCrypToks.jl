@@ -20,14 +20,17 @@ include("constant.jl")
 # include - token amount
 include("toknAmt.jl")
 
+# include - ratio
+include("ratio.jl")
+
+# include - pair/tracked amount
+include("pairAmt.jl")
+
 # include - fiat amount
 include("fiatAmt.jl")
 
 # include - cryp amount
 include("crypAmt.jl")
-
-# include - pair/tracked amount
-include("pairAmt.jl")
 
 # module
 end
