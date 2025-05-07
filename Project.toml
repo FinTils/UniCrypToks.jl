@@ -8,10 +8,12 @@ Currencies = "0fd90b74-7c1f-579e-9252-02cd883047b9"
 FixedPointDecimals = "fb4d412d-6eee-574d-9565-ede6634db7b0"
 Printf = "de0858da-6303-5e67-8744-51eddeeeb8d7"
 Reexport = "189a3867-3050-52da-a836-e630ba90ab69"
+InteractiveUtils = "b77e0a4c-d291-57a0-90e8-8db25a27a240"
 
 [compat]
 Currencies = "0.17.0"
 FixedPointDecimals = "0.6.3"
+InteractiveUtils = "1.11.0"
 Printf = "1.11.0"
 Reexport = "1.2.2"
 julia = "1.6.7"
