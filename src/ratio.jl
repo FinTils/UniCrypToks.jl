@@ -28,7 +28,7 @@ end
 export toknRatio, num, den, rat, simplify
 
 # show
-function show(io::IO, r::toknRatio)
+function Base.show(io::IO, r::toknRatio)
     print(num(r))
     print(" : ")
     print(den(r))
