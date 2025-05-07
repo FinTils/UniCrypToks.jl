@@ -37,19 +37,25 @@ AbstractFinance
 Financial calculations with fiat and crypto currency amounts:
 
 ```julia
-julia> sat(a::Integer) = a//1_0000_0000     # user-defined function for "satoshis"
-sat (generic function with 1 method)
+julia> const _sat = crypAmt(:BTC, 1e-8)     # user-defined "satoshi" — the smallest BTC amount
++0.0000000100    BTC
 
 julia> txn = crypAmt(:BTC, 0.01772)
 +0.0177200000    BTC
 
-julia> fee = crypAmt(:BTC, sat(241))
+julia> fee = 241_sat
 +0.0000024100    BTC
 
 julia> cre = txn - fee
 +0.0177175900    BTC
 
-julia> rate = fiatAmt(:USD, 96_000)
+julia> acc = 2e6_sat
++0.0200000000    BTC
+
+julia> acc += cre
++0.0377175900    BTC
+
+julia> rate = fiatAmt(:USD, 96_000)         # user-defined BTC:USD exchange rate
 +96000.0000000000    USD
 
 julia> FEE = bare(fee) * rate
