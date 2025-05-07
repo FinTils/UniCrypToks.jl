@@ -38,7 +38,7 @@ Financial calculations with fiat and crypto currency amounts:
 
 ```julia
 julia> sat(a::Integer) = a//1_0000_0000     # user-defined function for "satoshis"
-sats (generic function with 1 method)
+sat (generic function with 1 method)
 
 julia> txn = crypAmt(:BTC, 0.01772)
 +0.0177200000    BTC
