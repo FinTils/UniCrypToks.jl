@@ -18,12 +18,12 @@ export AbstractFinance
 
 
 #--------------------------------------------------------------------------------------------------#
-#                                    AbstractTokenAmount branch                                    #
+#                                       UniformAmount branch                                       #
 #--------------------------------------------------------------------------------------------------#
 
 """
 `abstract type UniformAmount <: AbstractFinance end`\n
-Abstract type for all token amount types.
+Abstract type for all (uniform-precision) token amount types.
 """
 abstract type UniformAmount <: AbstractFinance end
 
@@ -44,5 +44,19 @@ abstract type pairAmount <: UniformAmount end
 
 # export
 export UniformAmount, toknAmount, pairAmount
+
+
+#--------------------------------------------------------------------------------------------------#
+#                                       UniformRatio branch                                        #
+#--------------------------------------------------------------------------------------------------#
+
+"""
+`abstract type UniformRatio <: AbstractFinance end`\n
+Abstract type for all (uniform-precision) crypto-to-fiat ratio types.
+"""
+abstract type UniformRatio <: AbstractFinance end
+
+# export
+export UniformRatio
 
 
