@@ -28,7 +28,8 @@ julia> using UniKrypToks, TypeTree
 
 julia> print(tt(AbstractFinance)...)
 AbstractFinance
- └─ AbstractTokenAmount
+ └─ UniformAmount
+     ├─ pairAmount
      └─ toknAmount
          ├─ crypAmt
          └─ fiatAmt
