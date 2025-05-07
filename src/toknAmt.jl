@@ -43,10 +43,10 @@ end
 export symb, bare, copy
 
 # imports
-import Base: +, -, *, /, inv, abs, ==, isless
+import Base: +, -, *, /, inv, abs, ==, isless, zero, one
 
 # {𝕋}-unaries
-for unARY in [:-, :inv, :abs]
+for unARY in [:-, :inv, :abs, :zero, :one]
     @eval $unARY(x::𝕋) where {𝕋 <: toknAmount} = 𝕋(symb(x), $unARY(bare(x)))
 end
 
