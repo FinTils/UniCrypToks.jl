@@ -26,6 +26,9 @@ include("fiatAmt.jl")
 # include - cryp amount
 include("crypAmt.jl")
 
+# include - pair/tracked amount
+include("pairAmt.jl")
+
 # module
 end
 
