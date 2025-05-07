@@ -1,4 +1,4 @@
-using UniCrypToks
+using UniKrypToks
 using Test
 using InteractiveUtils
 using Base.Docs: hasdoc
@@ -19,9 +19,10 @@ end
 
 @testset "Testing abstract.jl                                             " begin
     # --- Generalized abstract type tests
-    for 𝑐, 𝑝 in [(  :AbstractFinance        ,:Any                      ),
-                 (    :AbstractTokenAmount  ,  :AbstractFinance        ),
-                 (      :toknAmount         ,    :AbstractTokenAmount  ),
+    for 𝑐, 𝑝 in [(  :AbstractFinance        ,:Any                       ),
+                 (    :UniformAmount        ,  :AbstractFinance         ),
+                 (      :toknAmount         ,    :UniformAmount         ),
+                 (      :pairAmount         ,    :UniformAmount         ),
                 ]
         @test isdefined(FinTilsBase, 𝑐)         # Is it defined in the module?
         @test isdefined(Main, 𝑐)                # Is is exported?
