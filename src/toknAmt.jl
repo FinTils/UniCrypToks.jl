@@ -14,13 +14,8 @@ FD(i::Irrational) = FD(BigFloat(i))
 
 import Base: show
 
-function show(io::IO, ::MIME"text/plain", x::FD)
-    iscompact = get(io, :compact, false)
-    if iscompact
-        print(@sprintf("%+.10f", BigFloat(x)))
-    else
-        print(@sprintf("%+10.10f", BigFloat(x)))
-    end
+function Base.show(io::IO, x::FD)
+    @printf("%+.10f", BigFloat(x))
 end
 
 
@@ -75,13 +70,8 @@ for bnARY in [Symbol("=="), :isless]
 end
 
 # show
-function show(io::IO, x::𝕋) where {𝕋 <: toknAmount}
-    iscompact = get(io, :compact, false)
-    if iscompact
-        print(@sprintf("%+.10f %s", BigFloat(bare(x)), symb(x)))
-    else
-        print(@sprintf("%+10.10f %6s", BigFloat(bare(x)), symb(x)))
-    end
+function Base.show(io::IO, x::𝕋) where {𝕋 <: toknAmount}
+    @printf("%+.10f %6s", BigFloat(x), symb(x))
 end
 
 
