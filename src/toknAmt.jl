@@ -84,6 +84,4 @@ function show(io::IO, x::𝕋) where {𝕋 <: toknAmount}
     end
 end
 
-show(io::IO, ::MIME"text/plain", x::𝕋) where {𝕋 <: toknAmount} = show(io, x)
-
 
