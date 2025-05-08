@@ -18,45 +18,45 @@ export AbstractFinance
 
 
 #--------------------------------------------------------------------------------------------------#
-#                                       UniformAmount branch                                       #
+#                                       UnifiedAmount branch                                       #
 #--------------------------------------------------------------------------------------------------#
 
 """
-`abstract type UniformAmount <: AbstractFinance end`\n
-Abstract type for all (uniform-precision) token amount types.
+`abstract type UnifiedAmount <: AbstractFinance end`\n
+Abstract type for all (unified-precision) token amount types.
 """
-abstract type UniformAmount <: AbstractFinance end
+abstract type UnifiedAmount <: AbstractFinance end
 
 """
-`abstract type toknAmount <: UniformAmount end`\n
-Abstract type for all (uniform-precision) currency amount types.
+`abstract type toknAmount <: UnifiedAmount end`\n
+Abstract type for all (unified-precision) currency amount types.
 """
-abstract type toknAmount <: UniformAmount end
+abstract type toknAmount <: UnifiedAmount end
 
 """
-`abstract type pairAmount <: UniformAmount end`\n
-Abstract type for all (uniform-precision) paired/tracked currency amount types.
+`abstract type pairAmount <: UnifiedAmount end`\n
+Abstract type for all (unified-precision) paired/tracked currency amount types.
 
 A paired (or, fiat-tracked crypto) currency amount is a cryptocurrency amount paired with it's
 corresponding fiat purchase price.
 """
-abstract type pairAmount <: UniformAmount end
+abstract type pairAmount <: UnifiedAmount end
 
 # export
-export UniformAmount, toknAmount, pairAmount
+export UnifiedAmount, toknAmount, pairAmount
 
 
 #--------------------------------------------------------------------------------------------------#
-#                                       UniformRatio branch                                        #
+#                                       UnifiedRatio branch                                        #
 #--------------------------------------------------------------------------------------------------#
 
 """
-`abstract type UniformRatio <: AbstractFinance end`\n
-Abstract type for all (uniform-precision) crypto-to-fiat ratio types.
+`abstract type UnifiedRatio <: AbstractFinance end`\n
+Abstract type for all (unified-precision) crypto-to-fiat ratio types.
 """
-abstract type UniformRatio <: AbstractFinance end
+abstract type UnifiedRatio <: AbstractFinance end
 
 # export
-export UniformRatio
+export UnifiedRatio
 
 

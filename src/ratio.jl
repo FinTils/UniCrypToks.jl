@@ -9,7 +9,7 @@ import Base: +, -, *, /, inv, abs, ==, isless, zero, one
 for bnARY in [:+, :-]
     OPER = bnARY == :+ ? "add" : "subtract"
     @eval begin
-        function $bnARY(x::𝕋, y::𝕋) where {𝕋 <: UniformRatio}
+        function $bnARY(x::𝕋, y::𝕋) where {𝕋 <: UnifiedRatio}
             @assert(symb(x) == symb(y),
                     @sprintf("Can't %s different tokens!", $OPER))
             𝕋(symb(x), $bnARY(bare(x), bare(y)))
@@ -19,14 +19,14 @@ end
 
 # {𝕋, Real}-binaries
 for bnARY in [:*, :/]
-    @eval $bnARY(x::𝕋, y::Real) where {𝕋 <: UniformRatio} = 𝕋(symb(x), $bnARY(bare(x), y))
+    @eval $bnARY(x::𝕋, y::Real) where {𝕋 <: UnifiedRatio} = 𝕋(symb(x), $bnARY(bare(x), y))
 end
 # fallback versions thereof
-*(y::Real, x::𝕋) where {𝕋 <: UniformRatio} = *(x, y)
+*(y::Real, x::𝕋) where {𝕋 <: UnifiedRatio} = *(x, y)
 
 # Bool {𝕋, 𝕋}-binaries
 for bnARY in [Symbol("=="), :isless]
-    @eval $bnARY(x::𝕋, y::𝕋) where {𝕋 <: UniformRatio} = $bnARY(bare(x), bare(y))
+    @eval $bnARY(x::𝕋, y::𝕋) where {𝕋 <: UnifiedRatio} = $bnARY(bare(x), bare(y))
 end
 
 
@@ -35,10 +35,10 @@ end
 #--------------------------------------------------------------------------------------------------#
 
 """
-`toknRatio <: UniformRatio`\n
+`toknRatio <: UnifiedRatio`\n
 A unified-precision crypto token ratio.
 """
-struct toknRatio{𝗡, 𝗗} <: UniformRatio where {𝗡 <: toknAmount, 𝗗 <: toknAmount}
+struct toknRatio{𝗡, 𝗗} <: UnifiedRatio where {𝗡 <: toknAmount, 𝗗 <: toknAmount}
     N::𝗡
     D::𝗗
     toknRatio(n::toknAmount, d::toknAmount) = new{typeof(n), typeof(d)}(n, d)

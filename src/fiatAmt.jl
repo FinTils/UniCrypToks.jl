@@ -12,7 +12,7 @@ isCryp(x::Symbol) = !isFiat(x)
 
 """
 `struct fiatAmt <: toknAmount`\n
-A fiat `toknAmount`, i.e., a fiat currency amount of uniform representation.
+A fiat `toknAmount`, i.e., a fiat currency amount of unified representation.
 """
 struct fiatAmt <: toknAmount
     sym::Symbol

@@ -20,9 +20,10 @@ end
 @testset "Testing abstract.jl                                             " begin
     # --- Generalized abstract type tests
     for pair in [(  :AbstractFinance        ,:Any                       ),
-                 (    :UniformAmount        ,  :AbstractFinance         ),
-                 (      :toknAmount         ,    :UniformAmount         ),
-                 (      :pairAmount         ,    :UniformAmount         ),
+                 (    :UnifiedAmount        ,  :AbstractFinance         ),
+                 (      :pairAmount         ,    :UnifiedAmount         ),
+                 (      :toknAmount         ,    :UnifiedAmount         ),
+                 (    :UnifiedRatio         ,  :AbstractFinance         ),
                 ]
         𝑐, 𝑝 = pair
         @test isdefined(UniKrypToks, 𝑐)         # Is it defined in the module?

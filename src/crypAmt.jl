@@ -8,7 +8,7 @@
 
 """
 `struct crypAmt <: toknAmount`\n
-A cryp `toknAmount`, i.e., a crypto currency amount of uniform representation.
+A cryp `toknAmount`, i.e., a crypto currency amount of unified representation.
 """
 struct crypAmt <: toknAmount
     sym::Symbol
