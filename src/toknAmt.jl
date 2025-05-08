@@ -23,13 +23,13 @@ function symb(x::𝕋)::Symbol where {𝕋 <: toknAmount} end
 # function to return a token's "bare" value as a ::FD
 function bare(x::𝕋)::FD where {𝕋 <: toknAmount} end
 
-# function to copy a token's instance
-function copy(x::𝕋) where {𝕋 <: toknAmount}
+# function to mkcp a token's instance
+function mkcp(x::𝕋) where {𝕋 <: toknAmount}
     𝕋(symb(x), bare(x))
 end
 
 # export
-export symb, bare, copy
+export symb, bare, mkcp
 
 # imports
 import Base: +, -, *, /, inv, abs, ==, isless, zero, one
