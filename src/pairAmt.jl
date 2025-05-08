@@ -12,8 +12,8 @@ function symb(x::𝕋)::NTuple{2,Symbol} where {𝕋 <: pairAmount} end
 # function to return a pair's "bare" values as a ::NTuple{2,FD}
 function bare(x::𝕋)::NTuple{2,FD} where {𝕋 <: pairAmount} end
 
-# function to copy a pair's instance
-function copy(x::𝕋) where {𝕋 <: pairAmount}
+# function to mkcp a pair's instance
+function mkcp(x::𝕋) where {𝕋 <: pairAmount}
     𝕋(symb(x), bare(x))
 end
 
