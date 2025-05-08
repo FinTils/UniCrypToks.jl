@@ -28,43 +28,55 @@ julia> using UniKrypToks, TypeTree
 
 julia> print(tt(AbstractFinance)...)
 AbstractFinance
- └─ UnifiedAmount
-     ├─ pairAmount
-     └─ toknAmount
-         ├─ crypAmt
-         └─ fiatAmt
+ ├─ UnifiedAmount
+ │   ├─ pairAmount
+ │   └─ toknAmount
+ │       ├─ crypAmt
+ │       └─ fiatAmt
+ └─ UnifiedRatio
+     └─ toknRatio
 ```
 
 Financial calculations with fiat and crypto currency amounts:
 
 ```julia
 julia> const _sat = crypAmt(:BTC, 1e-8)     # user-defined "satoshi" — the smallest BTC amount
-+0.0000000100    BTC
+crypAmt(:BTC, FixedDecimal{Int128,10}(0.0000000100))
 
-julia> txn = crypAmt(:BTC, 0.01772)
-+0.0177200000    BTC
+julia> acc = 2_326_484_sat
+crypAmt(:BTC, FixedDecimal{Int128,10}(0.0232648400))
 
-julia> fee = 241_sat
-+0.0000024100    BTC
+julia> dep = 123418_sat
+crypAmt(:BTC, FixedDecimal{Int128,10}(0.0012341800))
 
-julia> cre = txn - fee
-+0.0177175900    BTC
+julia> fee = 909_sat
+crypAmt(:BTC, FixedDecimal{Int128,10}(0.0000090900))
 
-julia> acc = 2e6_sat
-+0.0200000000    BTC
+julia> acc += dep - fee
+crypAmt(:BTC, FixedDecimal{Int128,10}(0.0244899300))
+```
 
-julia> acc += cre
-+0.0377175900    BTC
+Financial calculations with exchange rates:
 
-julia> rate = fiatAmt(:USD, 96_000)         # user-defined BTC:USD exchange rate
-+96000.0000000000    USD
+```julia
+julia> x, y = fiatAmt(:USD, 1891.81), crypAmt(:ETH, 1);
 
-julia> FEE = bare(fee) * rate
-+0.2313600000    USD
+julia> r = x/y
+toknRatio{fiatAmt, crypAmt}(fiatAmt(:USD, FixedDecimal{Int128,10}(1891.8100000000)), crypAmt(:ETH, FixedD
+ecimal{Int128,10}(1.0000000000)))
+
+julia> ratl(r)
+189181//100
+
+julia> asfp(r)
+1891.810000000000000000000000000000000000000000000000000000000000000000000000001
+
+julia> crypAmt(:ETH,0.023486863) * r
+fiatAmt(:USD, FixedDecimal{Int128,10}(44.4326822920))
 ```
 
 
-## Spelling
+## Naming
 
 The package "Crypto" part is spelled with "K", as in `Kr - Krypton` — the element, owing to the
 greek origins of all things crypto.
