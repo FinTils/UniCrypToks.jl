@@ -126,5 +126,6 @@ function *(r::toknRatio{𝗡, 𝗗}, ζ::toknRatio{𝗗, 𝗡}) where {𝗡 <: t
     ratl(r) * ratl(ζ)
 end
 
+/(r::toknRatio{𝗡, 𝗗}, ζ::toknRatio{𝗡, 𝗗}) where {𝗡 <: toknAmount, 𝗗 <: toknAmount} = r * inv(ζ)
 
 
